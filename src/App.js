@@ -5,17 +5,12 @@ import Navigation from './components/navigation/Navigation';
 import Loader from './components/loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import MainViews from './views/mainViews/MainViews';
-// import SideViews from './views/sideViews/SideViews';
-// import NotFound from './views/notFound/NotFound';
+
 const MainViews = lazy(() =>
   import('./views/mainViews/MainViews' /* webpackChunkName: "home-page" */),
 );
 const SideViews = lazy(() =>
   import('./views/sideViews/SideViews' /* webpackChunkName: "movies-page" */),
-);
-const NotFound = lazy(() =>
-  import('./views/notFound/NotFound' /* webpackChunkName: "not-found" */),
 );
 
 function App() {
@@ -31,9 +26,7 @@ function App() {
           <Route exact path="/in/:city">
             <SideViews />
           </Route>
-          <Route path="">
-            <NotFound />
-          </Route>
+          <Route path=""></Route>
         </Switch>
       </Suspense>
     </Container>
