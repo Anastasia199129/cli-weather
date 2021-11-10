@@ -26,7 +26,6 @@ function App() {
           <Route exact path="/in/:city">
             <SideViews />
           </Route>
-          <Route path=""></Route>
         </Switch>
       </Suspense>
     </Container>
