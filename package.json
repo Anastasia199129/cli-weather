@@ -18,6 +18,7 @@
     "react-toastify": "^8.1.0",
     "redax": "0.0.0",
     "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
