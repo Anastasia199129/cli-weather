@@ -1,8 +1,5 @@
 import React from 'react';
-
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useHistory, useLocation, useRouteMatch } from 'react-router';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 export default function Form({ onSubmitHandler }) {
@@ -14,8 +11,8 @@ export default function Form({ onSubmitHandler }) {
 
   const onSubmit = e => {
     e.preventDefault();
-    onSubmitHandler(query);
-    setQuery('');
+    onSubmitHandler(query, setQuery);
+    // setQuery('');
   };
 
   return (

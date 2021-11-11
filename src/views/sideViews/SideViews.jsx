@@ -1,28 +1,37 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
+import React from 'react';
+import { useParams, useHistory } from 'react-router';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../redux/actions';
 import Form from '../../components/form/Form';
 import TenDaysWeather from '../../components/tenDaysWeather/TenDaysWeather';
-import { useParams } from 'react-router';
 
 export default function SideViews() {
-  const [searchQuery, setSearchQuery] = useState(null);
-  const [toggle, setToggle] = useState(false);
   const { city } = useParams();
+  const searchQuery = useSelector(state => state.сities);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  console.log(searchQuery);
 
-  const onSubmit = query => {
-    setToggle(true);
+  useEffect(() => {
+    return dispatch(actions.chooseСity(city));
+  }, []);
+
+  const onSubmit = (query, setQuery) => {
     if (query.trim() === '') {
       alert('Fill in the search box!');
       return;
     }
-    setSearchQuery(query);
+
+    dispatch(actions.chooseСity(query));
+    history.push(`/in/${query}`);
+    setQuery('');
   };
 
   return (
     <div>
-      {!toggle && <TenDaysWeather city={city} />}
-      {toggle && <TenDaysWeather city={searchQuery} />}
-
+      <TenDaysWeather city={searchQuery} />
       <Form onSubmitHandler={onSubmit} />
     </div>
   );
