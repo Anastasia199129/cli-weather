@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import s from './navigation.module.css';
-import { useLocation, useRouteMatch } from 'react-router';
+import { useRouteMatch } from 'react-router';
 import { useSelector } from 'react-redux';
 
 function Navigation() {
-  const location = useLocation();
   const searchQuery = useSelector(state => state.сities);
   const { url } = useRouteMatch();
 

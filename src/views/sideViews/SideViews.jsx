@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react';
 import React from 'react';
 import { useParams, useHistory } from 'react-router';
 import { useEffect } from 'react';
@@ -31,8 +30,8 @@ export default function SideViews() {
 
   return (
     <div>
-      <TenDaysWeather city={searchQuery} />
       <Form onSubmitHandler={onSubmit} />
+      <TenDaysWeather city={searchQuery} />
     </div>
   );
 }

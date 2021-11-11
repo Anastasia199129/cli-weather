@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { chooseСity } from './actions';
 import { createReducer } from '@reduxjs/toolkit';
 

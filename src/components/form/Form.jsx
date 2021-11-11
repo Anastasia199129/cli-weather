@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import s from './form.module.css';
 
 export default function Form({ onSubmitHandler }) {
   const [query, setQuery] = useState('');
@@ -16,16 +16,19 @@ export default function Form({ onSubmitHandler }) {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <div className={s.Searchbar}>
+      <form className={s.SearchForm} onSubmit={onSubmit}>
+        <button className={s.SearchFormButton} type="submit">
+          Search
+        </button>
         <input
+          className={s.SearchFormInput}
           name="name"
           type="text"
           onChange={onChange}
           value={query}
-          placeholder="movie title"
+          placeholder="City name"
         />
-        <button type="submit">search</button>
       </form>
     </div>
   );

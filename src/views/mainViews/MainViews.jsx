@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import s from './mainViews.module.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import OneCityWeather from '../../components/oneCityWeather/OneCityWeather';
@@ -66,13 +67,13 @@ export default function MainViews() {
         </ul>
 
         <div>
-          <button name="Minsk" type="submit" onClick={onCityClick}>
+          <button className={s.button} name="Minsk" type="submit" onClick={onCityClick}>
             Minsk
           </button>
-          <button name="Moscow" type="submit" onClick={onCityClick}>
+          <button className={s.button} name="Moscow" type="submit" onClick={onCityClick}>
             Moscow
           </button>
-          <button name="Bratislava" type="submit" onClick={onCityClick}>
+          <button className={s.button} name="Bratislava" type="submit" onClick={onCityClick}>
             Bratislava
           </button>
         </div>
