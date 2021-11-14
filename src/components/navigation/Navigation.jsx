@@ -8,16 +8,19 @@ function Navigation() {
   const { url } = useRouteMatch();
 
   return (
-    <header className={s.wrapperNav}>
-      <nav className="nav">
-        <NavLink exact to="/" className={s.link} activeClassName={s.active}>
-          Main
-        </NavLink>
-        <NavLink to={`${url}in/${searchQuery}`} className={s.link} activeClassName={s.active}>
-          10 days forecast
-        </NavLink>
-      </nav>
-    </header>
+    <>
+      <h2 className={s.mainTitle}>Weather</h2>
+      <header className={s.wrapperNav}>
+        <nav className="nav">
+          <NavLink exact to="/" className={s.link} activeClassName={s.active}>
+            Main
+          </NavLink>
+          <NavLink to={`${url}in/${searchQuery}`} className={s.link} activeClassName={s.active}>
+            10 days forecast
+          </NavLink>
+        </nav>
+      </header>
+    </>
   );
 }
 
