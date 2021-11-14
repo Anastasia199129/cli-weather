@@ -24,7 +24,7 @@ export default function TenDaysWeather({ city }) {
         }
       })
       .catch(function (error) {
-        return setCities(null);
+        return console.log(error.message);
       });
   }, [city]);
 
