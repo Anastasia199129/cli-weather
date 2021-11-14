@@ -15,13 +15,16 @@ export default function TenDaysWeather({ city }) {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=24498744197ba68ecec24a2a3e331322&units=metric&cnt=10`,
       )
       .then(function (response) {
+        if (response.status === 404) {
+          return alert('Not found');
+        }
         if (response.status === 200) {
           setCities(response.data);
           return response;
         }
       })
       .catch(function (error) {
-        return setCities(null);
+        return (city = null);
       });
   }, [city]);
 
