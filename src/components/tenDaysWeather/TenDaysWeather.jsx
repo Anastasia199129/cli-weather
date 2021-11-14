@@ -15,16 +15,13 @@ export default function TenDaysWeather({ city }) {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=24498744197ba68ecec24a2a3e331322&units=metric&cnt=10`,
       )
       .then(function (response) {
-        if (response.status === 404) {
-          return alert('Тo such city exists');
-        }
         if (response.status === 200) {
           setCities(response.data);
           return response;
         }
       })
       .catch(function (error) {
-        console.log(error);
+        return setCities(null);
       });
   }, [city]);
 
@@ -51,6 +48,6 @@ export default function TenDaysWeather({ city }) {
       </ul>
     </div>
   ) : (
-    <div>No results were found for your search!</div>
+    <h2 className={s.notFound}>{` Searching: (${city}) no results found`}</h2>
   );
 }
