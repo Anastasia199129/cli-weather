@@ -8,16 +8,16 @@ function Navigation() {
   const { url } = useRouteMatch();
 
   return (
-    <div className={s.wrapperNav}>
+    <header className={s.wrapperNav}>
       <nav className="nav">
         <NavLink exact to="/" className={s.link} activeClassName={s.active}>
           Main
         </NavLink>
         <NavLink to={`${url}in/${searchQuery}`} className={s.link} activeClassName={s.active}>
-          Побочная страница
+          10 days forecast
         </NavLink>
       </nav>
-    </div>
+    </header>
   );
 }
 

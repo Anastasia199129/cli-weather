@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import s from './tenDaysWeather.module.css';
 
 export default function TenDaysWeather({ city }) {
   const [cities, setCities] = useState(null);
@@ -14,6 +15,9 @@ export default function TenDaysWeather({ city }) {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=24498744197ba68ecec24a2a3e331322&units=metric&cnt=10`,
       )
       .then(function (response) {
+        if (response.status === 404) {
+          return alert('Тo such city exists');
+        }
         if (response.status === 200) {
           setCities(response.data);
           return response;
@@ -26,21 +30,22 @@ export default function TenDaysWeather({ city }) {
 
   return cities ? (
     <div>
-      <h2>{cities.city.name}</h2>
-      <ul>
+      <h2 className={s.title}>{cities.city.name}</h2>
+      <ul className={s.list}>
         {cities.list.map(e => (
-          <li key={e.dt}>
-            <span>{e.weather[0].description}</span>
-            <span>temp:</span>
-            <span>{Math.round(e.main.temp)}&deg; </span>
-            <span>min temp:</span>
-            <span>{Math.round(e.main.temp_min)}&deg;</span>
-            <span>max temp:</span>
-            <span>{Math.round(e.main.temp_max)}&deg; </span>
-            <span>sunrise</span>
-            <span>{e.sys.sunrise}</span>
-            <span>sunset</span>
-            <span>{e.sys.sunset}</span>
+          <li className={s.item} key={e.dt}>
+            <p>
+              <span className={s.weatherDescr}>{e.weather[0].description}</span>
+              <span className={s.temp}>{Math.round(e.main.temp)}&deg; </span>
+            </p>
+            <p>
+              <span className={s.weatherDescr}>min temp:</span>
+              <span className={s.temp}>{Math.round(e.main.temp_min)}&deg;</span>
+            </p>
+            <p>
+              <span className={s.weatherDescr}>max temp:</span>
+              <span className={s.temp}>{Math.round(e.main.temp_max)}&deg; </span>
+            </p>
           </li>
         ))}
       </ul>

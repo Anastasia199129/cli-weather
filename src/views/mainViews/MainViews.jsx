@@ -47,26 +47,26 @@ export default function MainViews() {
     citys && (
       <div>
         <OneCityWeather city={searchQuery} />
-        <h2>{citys.city.name}</h2>
-        <ul>
+        <h2 className={s.title}>Three days weather forecast:</h2>
+        <ul className={s.list}>
           {citys.list.map(e => (
-            <li key={e.dt}>
-              <span>{e.weather[0].description}</span>
-              <span>temp:</span>
-              <span>{Math.round(e.main.temp)}&deg; </span>
-              <span>min temp:</span>
-              <span>{Math.round(e.main.temp_min)}&deg;</span>
-              <span>max temp:</span>
-              <span>{Math.round(e.main.temp_max)}&deg; </span>
-              <span>sunrise</span>
-              <span>{e.sys.sunrise}</span>
-              <span>sunset</span>
-              <span>{e.sys.sunset}</span>
+            <li className={s.item} key={e.dt}>
+              <p>
+                <span className={s.weatherDescr}>{e.weather[0].description}</span>
+                <span className={s.temp}>{Math.round(e.main.temp)}&deg; </span>
+              </p>
+              <p>
+                <span className={s.weatherDescr}>min temp:</span>
+                <span className={s.temp}>{Math.round(e.main.temp_min)}&deg;</span>
+              </p>
+              <p>
+                <span className={s.weatherDescr}>max temp:</span>
+                <span className={s.temp}>{Math.round(e.main.temp_max)}&deg; </span>
+              </p>
             </li>
           ))}
         </ul>
-
-        <div>
+        <div className={s.buttonWrapper}>
           <button className={s.button} name="Minsk" type="submit" onClick={onCityClick}>
             Minsk
           </button>
