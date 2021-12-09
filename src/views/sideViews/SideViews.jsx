@@ -21,7 +21,7 @@ export default function SideViews() {
     return () => {
       dispatch(actions.chooseСity('Minsk'));
     };
-  });
+  }, [history]);
 
   const onSubmit = (query, setQuery) => {
     if (query.trim() === '') {
