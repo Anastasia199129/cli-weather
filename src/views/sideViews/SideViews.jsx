@@ -17,6 +17,12 @@ export default function SideViews() {
     return dispatch(actions.chooseСity(city));
   }, []);
 
+  useEffect(() => {
+    return () => {
+      dispatch(actions.chooseСity('Minsk'));
+    };
+  });
+
   const onSubmit = (query, setQuery) => {
     if (query.trim() === '') {
       alert('Fill in the search box!');

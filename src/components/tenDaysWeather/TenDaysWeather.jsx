@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useDispatch } from 'react';
+import * as actions from '../../redux/actions';
 import s from './tenDaysWeather.module.css';
 
 export default function TenDaysWeather({ city }) {
   const [cities, setCities] = useState(null);
-
+  // const dispatch = useDispatch();
   useEffect(() => {
     if (!city) {
       return;
@@ -15,11 +16,12 @@ export default function TenDaysWeather({ city }) {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=24498744197ba68ecec24a2a3e331322&units=metric&cnt=10`,
       )
       .then(function (response) {
-        if (response.cod === '404') {
+        if (response.cod === 404) {
           return alert('Not found');
         }
         if (response.status === 200) {
           setCities(response.data);
+          console.log(response.data);
           return response;
         }
       })
